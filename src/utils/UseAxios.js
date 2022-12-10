@@ -10,6 +10,7 @@ const useAxios = ({ url, method, body = null, headers = null }) => {
     // const dataFetchedRef = useRef(false);
 
     const fetchData = () => {
+        setLoading(true);
         axios[method](url, JSON.parse(headers), JSON.parse(body))
             .then((res) => {
                 setResponse(res.data);

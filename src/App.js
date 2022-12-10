@@ -12,8 +12,6 @@ function App() {
   const [itemOffset, setItemOffset] = useState(0);
   const handlePageClick = (event) => {
     const newOffset = parseInt(event.selected + 1);
-    console.log(`page number ${newOffset}`
-    );
     setItemOffset(newOffset);
   }
 
@@ -34,7 +32,7 @@ function App() {
     <div className="App">
       <h2 className="title">User Posts</h2>
       {
-        loading ? (<p>Loading...</p>) :
+        loading ? (<div id="loader"></div>) :
         <div>
           { postList?.length ?
              <Posts currentItems={postList} /> : ""
