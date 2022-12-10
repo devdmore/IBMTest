@@ -1,0 +1,34 @@
+import {useEffect, useState} from "react";
+import axios from "axios";
+
+axios.defaults.baseURL = 'https://jsonplaceholder.typicode.com';
+
+const useAxios = ({ url, method, body = null, headers = null }) => {
+    const [response, setResponse] = useState([]);
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(true);
+    // const dataFetchedRef = useRef(false);
+
+    const fetchData = () => {
+        axios[method](url, JSON.parse(headers), JSON.parse(body))
+            .then((res) => {
+                setResponse(res.data);
+            })
+            .catch((err) => {
+                setError(err);
+            })
+            .finally(() => {
+                setLoading(false);
+            });
+    };
+
+    useEffect(() => {
+        // if (dataFetchedRef.current) return;
+        // dataFetchedRef.current = true;
+        fetchData();
+    }, [method, url, body, headers]);
+
+    return { response, error, loading }
+};
+
+export default useAxios;
