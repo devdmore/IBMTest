@@ -5,7 +5,7 @@ import ReactPaginate from 'react-paginate';
 import Posts from "./Posts";
 
 function App() {
-  const [employeeList, setEmployeeList] = useState([]);
+  const [postList, setPostList] = useState([]);
   const itemsPerPage = 10;
   const totalItems = 500; // as total 500 records coming from jsonplaceholder
   const pageCount = Math.ceil(totalItems/itemsPerPage);
@@ -27,7 +27,7 @@ function App() {
   useEffect(() => {
     console.log(response, "response");
     if(response !== null){
-      setEmployeeList(response);
+      setPostList(response);
     }
   }, [response]);
 
@@ -37,8 +37,8 @@ function App() {
       {
         loading ? (<p>Loading...</p>) :
         <div>
-          { employeeList?.length ?
-             <Posts currentItems={employeeList} /> : ""
+          { postList?.length ?
+             <Posts currentItems={postList} /> : ""
           }
           <div className="pagination">
             <ReactPaginate
