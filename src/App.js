@@ -1,8 +1,8 @@
-import {useEffect, useState} from "react";
+import React,{useEffect, useState} from "react";
 import './scss/custom.scss';
 import useAxios from './utils/UseAxios';
-import React from 'react';
 import ReactPaginate from 'react-paginate';
+import Posts from "./Posts";
 
 function App() {
   const [employeeList, setEmployeeList] = useState([]);
@@ -38,7 +38,7 @@ function App() {
         loading ? (<p>Loading...</p>) :
         <div>
           { employeeList?.length ?
-             <Items currentItems={employeeList} /> : ""
+             <Posts currentItems={employeeList} /> : ""
           }
           <div className="pagination">
             <ReactPaginate
@@ -58,35 +58,6 @@ function App() {
         </div>
       }
     </div>
-  );
-}
-
-
-function Items({ currentItems }) {
-  return (
-    <>
-      <table border={1} className="table-style">
-        <thead>
-          <tr>
-            <th></th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Post</th>
-          </tr>
-        </thead>
-        <tbody>
-          {currentItems.length &&
-          currentItems?.map((item) => (
-            <tr key={item.id}>
-              <td>{item?.id}</td>
-              <td>{item?.name}</td>
-              <td>{item?.email}</td>
-              <td>{(item?.body).substring(0,50)}{item?.body?.length > 50 ? '...' : "" }</td>
-            </tr>
-          ))}          
-        </tbody>
-      </table>
-    </>
   );
 }
 
