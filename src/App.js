@@ -47,6 +47,7 @@ function App() {
               renderOnZeroPageCount={null}
               pageRangeDisplayed={1}
               marginPagesDisplayed={2}
+              forcePage={itemOffset-1} // for setting active page
             />
           </div>
           {
