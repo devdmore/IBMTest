@@ -25,7 +25,6 @@ function App() {
 
   // set data on every update
   useEffect(() => {
-    console.log(response, "response");
     if(response !== null){
       setPostList(response);
     }
