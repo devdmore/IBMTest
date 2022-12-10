@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import './scss/custom.scss';
-import useAxios from './utils/UseGetList';
+import useAxios from './utils/UseAxios';
 import React from 'react';
 import ReactPaginate from 'react-paginate';
 
